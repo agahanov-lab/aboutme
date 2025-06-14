@@ -21,8 +21,8 @@ export default function Projects() {
   const isLoading = activeFilter === "all" ? allLoading : filteredLoading;
 
   const displayProjects = activeFilter === "all" 
-    ? projects 
-    : projects?.filter(project => project.category === activeFilter) || [];
+    ? (projects || [])
+    : (projects?.filter(project => project.category === activeFilter) || []);
 
   return (
     <section className="relative py-24 mt-20 overflow-hidden">
@@ -56,13 +56,13 @@ export default function Projects() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {displayProjects.map((project) => (
+              {displayProjects?.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>
           )}
 
-          {!isLoading && displayProjects.length === 0 && (
+          {!isLoading && displayProjects?.length === 0 && (
             <div className="text-center py-12">
               <p className="text-muted-foreground">No projects found in this category.</p>
             </div>

@@ -34,19 +34,24 @@ export default function Resume() {
         </div>
 
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <iframe
-            src="https://docs.google.com/viewer?url=https://your-domain.replit.app/resume.pdf&embedded=true"
-            width="100%"
-            height="800px"
-            className="border-0"
-            title="Resume Preview"
-          >
-            <p>Your browser does not support PDFs. 
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                Download the PDF
-              </a>
+          <div className="p-8 text-center">
+            <h2 className="text-2xl font-medium mb-4">Resume Preview</h2>
+            <p className="text-muted-foreground mb-6">
+              This is a placeholder for your actual resume. Upload your PDF resume to the public folder to display it here.
             </p>
-          </iframe>
+            <div className="bg-muted p-12 rounded-lg">
+              <div className="max-w-md mx-auto space-y-4">
+                <div className="h-4 bg-primary/20 rounded w-3/4 mx-auto"></div>
+                <div className="h-4 bg-primary/20 rounded w-full"></div>
+                <div className="h-4 bg-primary/20 rounded w-2/3 mx-auto"></div>
+                <div className="h-4 bg-primary/20 rounded w-5/6 mx-auto"></div>
+                <div className="h-4 bg-primary/20 rounded w-3/4 mx-auto"></div>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-6">
+              To display your actual resume, replace the placeholder PDF in the public folder with your resume file.
+            </p>
+          </div>
         </div>
       </div>
     </section>
