@@ -1,0 +1,99 @@
+import { useEffect } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+
+export default function About() {
+  useScrollAnimation();
+
+  useEffect(() => {
+    document.title = "About Me - Mekan";
+  }, []);
+
+  const handleResumeDownload = () => {
+    // Create a link to download the resume
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Mekan_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <section className="py-24 bg-muted/30 mt-20">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="text-center mb-16 fade-in-section">
+          <h1 className="text-4xl md:text-5xl font-light mb-4">About Me</h1>
+          <div className="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        {/* Profile Section */}
+        <Card className="mb-12 fade-in-section">
+          <CardContent className="p-8 md:p-12">
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="space-y-6">
+                <h2 className="text-2xl font-medium">Education</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-medium">Computer Science</h3>
+                    <p className="text-muted-foreground">University Name, 2024</p>
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Mathematics Minor</h3>
+                    <p className="text-muted-foreground">University Name, 2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <h2 className="text-2xl font-medium">Awards</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-medium">Dean's List</h3>
+                    <p className="text-muted-foreground">Fall 2023, Spring 2024</p>
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Math Competition Winner</h3>
+                    <p className="text-muted-foreground">Regional Championship</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <h2 className="text-2xl font-medium">Achievements</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-medium">AI Research Publication</h3>
+                    <p className="text-muted-foreground">International Conference</p>
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Open Source Contributor</h3>
+                    <p className="text-muted-foreground">Multiple Projects</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Resume Download Section */}
+        <div className="text-center fade-in-section">
+          <Card className="inline-block">
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-medium mb-6">Download My Resume</h2>
+              <Button 
+                onClick={handleResumeDownload}
+                className="gap-2 transform hover:scale-105 duration-200"
+              >
+                <Download className="h-4 w-4" />
+                Download Resume
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
