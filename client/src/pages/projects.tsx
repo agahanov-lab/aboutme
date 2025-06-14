@@ -3,6 +3,7 @@ import { useProjects, useProjectsByCategory } from "@/hooks/use-projects";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import ProjectFilter from "@/components/project-filter";
 import ProjectCard from "@/components/project-card";
+import MathBackground from "@/components/math-background";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Projects() {
@@ -24,11 +25,15 @@ export default function Projects() {
     : projects?.filter(project => project.category === activeFilter) || [];
 
   return (
-    <section className="py-24 mt-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative py-24 mt-20 overflow-hidden">
+      <MathBackground />
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="text-center mb-16 fade-in-section">
           <h1 className="text-4xl md:text-5xl font-light mb-4">Projects</h1>
           <div className="w-24 h-1 bg-primary mx-auto"></div>
+          <p className="text-muted-foreground mt-6 max-w-2xl mx-auto">
+            Exploring the intersection of mathematics, algorithms, and innovation
+          </p>
         </div>
 
         <div className="fade-in-section">

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, Eye } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function About() {
@@ -78,18 +79,29 @@ export default function About() {
           </CardContent>
         </Card>
 
-        {/* Resume Download Section */}
+        {/* Resume Section */}
         <div className="text-center fade-in-section">
           <Card className="inline-block">
             <CardContent className="p-8">
-              <h2 className="text-2xl font-medium mb-6">Download My Resume</h2>
-              <Button 
-                onClick={handleResumeDownload}
-                className="gap-2 transform hover:scale-105 duration-200"
-              >
-                <Download className="h-4 w-4" />
-                Download Resume
-              </Button>
+              <h2 className="text-2xl font-medium mb-6">My Resume</h2>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/resume">
+                  <Button 
+                    variant="outline"
+                    className="gap-2 transform hover:scale-105 duration-200"
+                  >
+                    <Eye className="h-4 w-4" />
+                    Preview Resume
+                  </Button>
+                </Link>
+                <Button 
+                  onClick={handleResumeDownload}
+                  className="gap-2 transform hover:scale-105 duration-200"
+                >
+                  <Download className="h-4 w-4" />
+                  Download Resume
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>

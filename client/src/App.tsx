@@ -9,6 +9,7 @@ import About from "@/pages/about";
 import Projects from "@/pages/projects";
 import Blog from "@/pages/blog";
 import Admin from "@/pages/admin";
+import Resume from "@/pages/resume";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
@@ -22,6 +23,7 @@ function Router() {
         <Route path="/projects" component={Projects} />
         <Route path="/blog" component={Blog} />
         <Route path="/admin" component={Admin} />
+        <Route path="/resume" component={Resume} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
