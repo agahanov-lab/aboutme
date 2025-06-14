@@ -10,10 +10,25 @@ export const projects = pgTable("projects", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const blogs = pgTable("blogs", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  url: text("url").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const insertProjectSchema = createInsertSchema(projects).omit({
+  id: true,
+  createdAt: true,
+});
+
+export const insertBlogSchema = createInsertSchema(blogs).omit({
   id: true,
   createdAt: true,
 });
 
 export type InsertProject = z.infer<typeof insertProjectSchema>;
 export type Project = typeof projects.$inferSelect;
+export type InsertBlog = z.infer<typeof insertBlogSchema>;
+export type Blog = typeof blogs.$inferSelect;

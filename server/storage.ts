@@ -1,83 +1,63 @@
-import { projects, type Project, type InsertProject } from "@shared/schema";
+import { projects, blogs, type Project, type InsertProject, type Blog, type InsertBlog } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
+  // Project operations
   getProjects(): Promise<Project[]>;
   getProjectsByCategory(category: string): Promise<Project[]>;
   createProject(project: InsertProject): Promise<Project>;
+  deleteProject(id: number): Promise<void>;
+  
+  // Blog operations
+  getBlogs(): Promise<Blog[]>;
+  createBlog(blog: InsertBlog): Promise<Blog>;
+  deleteBlog(id: number): Promise<void>;
 }
 
-export class MemStorage implements IStorage {
-  private projects: Map<number, Project>;
-  private currentId: number;
-
-  constructor() {
-    this.projects = new Map();
-    this.currentId = 1;
-    
-    // Add some initial projects for demonstration
-    this.seedInitialProjects();
-  }
-
-  private async seedInitialProjects() {
-    const initialProjects: Omit<Project, 'id' | 'createdAt'>[] = [
-      {
-        title: "Sorting Algorithm Visualizer",
-        description: "Interactive visualization of various sorting algorithms with real-time performance metrics.",
-        category: "algorithms"
-      },
-      {
-        title: "3D Function Plotter",
-        description: "WebGL-based tool for plotting complex mathematical functions in three dimensions.",
-        category: "mathematics"
-      },
-      {
-        title: "Neural Network from Scratch",
-        description: "Pure JavaScript implementation of a neural network for handwritten digit recognition.",
-        category: "ai"
-      },
-      {
-        title: "Chess Engine",
-        description: "AI-powered chess engine with minimax algorithm and position evaluation.",
-        category: "games"
-      },
-      {
-        title: "Fractal Generator",
-        description: "Real-time fractal generation with zoom and color customization capabilities.",
-        category: "mathematics"
-      },
-      {
-        title: "Pathfinding Visualizer",
-        description: "Interactive grid-based pathfinding algorithm comparison tool with A*, Dijkstra, and more.",
-        category: "algorithms"
-      }
-    ];
-
-    for (const project of initialProjects) {
-      await this.createProject(project);
-    }
-  }
-
+export class DatabaseStorage implements IStorage {
+  // Project operations
   async getProjects(): Promise<Project[]> {
-    return Array.from(this.projects.values()).sort((a, b) => 
-      new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()
-    );
+    const result = await db.select().from(projects).orderBy(projects.createdAt);
+    return result.reverse(); // Most recent first
   }
 
   async getProjectsByCategory(category: string): Promise<Project[]> {
-    const allProjects = await this.getProjects();
-    return allProjects.filter(project => project.category === category);
+    const result = await db.select().from(projects)
+      .where(eq(projects.category, category))
+      .orderBy(projects.createdAt);
+    return result.reverse();
   }
 
   async createProject(insertProject: InsertProject): Promise<Project> {
-    const id = this.currentId++;
-    const project: Project = {
-      ...insertProject,
-      id,
-      createdAt: new Date()
-    };
-    this.projects.set(id, project);
+    const [project] = await db
+      .insert(projects)
+      .values(insertProject)
+      .returning();
     return project;
+  }
+
+  async deleteProject(id: number): Promise<void> {
+    await db.delete(projects).where(eq(projects.id, id));
+  }
+
+  // Blog operations
+  async getBlogs(): Promise<Blog[]> {
+    const result = await db.select().from(blogs).orderBy(blogs.createdAt);
+    return result.reverse(); // Most recent first
+  }
+
+  async createBlog(insertBlog: InsertBlog): Promise<Blog> {
+    const [blog] = await db
+      .insert(blogs)
+      .values(insertBlog)
+      .returning();
+    return blog;
+  }
+
+  async deleteBlog(id: number): Promise<void> {
+    await db.delete(blogs).where(eq(blogs.id, id));
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
