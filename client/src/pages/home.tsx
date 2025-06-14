@@ -59,7 +59,7 @@ export default function Home() {
               <span className="animate-pulse">|</span>
             </h1>
             <p className="text-xl md:text-2xl font-light text-muted-foreground max-w-2xl mx-auto">
-              Mathematician, Programmer, and Problem Solver
+              I love mathematics and competitive programming!
             </p>
           </div>
           

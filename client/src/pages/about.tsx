@@ -38,12 +38,12 @@ export default function About() {
                 <h2 className="text-2xl font-medium">Education</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-medium">Computer Science</h3>
-                    <p className="text-muted-foreground">University Name, 2024</p>
+                    <h3 className="font-medium">Mathematics</h3>
+                    <p className="text-muted-foreground">CUNY Baruch College, Expected: 2027</p>
                   </div>
                   <div>
-                    <h3 className="font-medium">Mathematics Minor</h3>
-                    <p className="text-muted-foreground">University Name, 2024</p>
+                    <h3 className="font-medium">Computer Science Minor</h3>
+                    <p className="text-muted-foreground">CUNY Baruch College, Expected: 2027</p>
                   </div>
                 </div>
               </div>
@@ -53,11 +53,11 @@ export default function About() {
                 <div className="space-y-4">
                   <div>
                     <h3 className="font-medium">Dean's List</h3>
-                    <p className="text-muted-foreground">Fall 2023, Spring 2024</p>
+                    <p className="text-muted-foreground">Fall 2023 - Present</p>
                   </div>
                   <div>
-                    <h3 className="font-medium">Math Competition Winner</h3>
-                    <p className="text-muted-foreground">Regional Championship</p>
+                    <h3 className="font-medium">IOI 2023</h3>
+                    <p className="text-muted-foreground">Honorable Mention</p>
                   </div>
                 </div>
               </div>
@@ -66,12 +66,12 @@ export default function About() {
                 <h2 className="text-2xl font-medium">Achievements</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-medium">AI Research Publication</h3>
-                    <p className="text-muted-foreground">International Conference</p>
+                    <h3 className="font-medium">2x Bronze Medalist</h3>
+                    <p className="text-muted-foreground">National Olympiad in Informatics in Turkmenistan</p>
                   </div>
                   <div>
-                    <h3 className="font-medium">Open Source Contributor</h3>
-                    <p className="text-muted-foreground">Multiple Projects</p>
+                    <h3 className="font-medium">$40k Top Up Scholarship Recipient</h3>
+                    <p className="text-muted-foreground">National Merit Scholarship</p>
                   </div>
                 </div>
               </div>

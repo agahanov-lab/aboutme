@@ -12,13 +12,13 @@ export default function Footer() {
               className="text-primary hover:underline font-medium inline-flex items-center gap-2"
             >
               <Mail className="h-4 w-4" />
-              mekan@example.com
+              mekan.agahanov@baruchmail.cuny.edu
             </a>
           </div>
 
           <div className="flex justify-center space-x-6">
             <a
-              href="https://linkedin.com/in/mekan"
+              href="https://www.linkedin.com/in/mekan-agahanov/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 duration-200"
@@ -26,7 +26,7 @@ export default function Footer() {
               <Linkedin className="h-6 w-6" />
             </a>
             <a
-              href="https://github.com/mekan"
+              href="https://github.com/agahanov-lab"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 duration-200"

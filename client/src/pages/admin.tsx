@@ -163,7 +163,7 @@ export default function Admin() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Lock className="h-5 w-5" />
-                Admin Login
+                Welcome Mekan!
               </CardTitle>
             </CardHeader>
             <CardContent>
